@@ -1,6 +1,6 @@
 <style>
     .hover-cards-container {
-        margin: 0;
+        margin: 0 auto;
         padding: 20px 10px;
         font-family: 'Arial', sans-serif;
         background: transparent;
@@ -10,7 +10,6 @@
         justify-content: center;
         align-items: center;
         max-width: 1000px;
-        margin: 0 auto;
     }
 
     .cards-row {
@@ -22,12 +21,8 @@
         width: 100%;
     }
 
-    .cards-row-3 {
+    .cards-row-3, .cards-row-2 {
         max-width: 900px;
-    }
-
-    .cards-row-2 {
-        max-width: 900px; /* 3行目も同じ最大幅に設定 */
     }
 
     .hover-card {
@@ -45,17 +40,13 @@
         flex: 0 0 auto;
     }
 
-    /* 2個のカードの行では、カードを少し大きくして合計幅を調整 */
     .cards-row-2 .hover-card {
-        width: 330px; /* 330px × 2 + 20px(gap) = 680px */
-        /* 3個のカードの場合: 280px × 3 + 40px(gap) = 880px に近づける */
+        width: 330px;
     }
 
     .hover-card:hover {
         transform: translateY(-8px) scale(1.03);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        text-decoration: none;
-        color: white;
     }
 
     .hover-card-background {
@@ -116,33 +107,15 @@
         background: rgba(0, 0, 0, 0.6);
     }
 
-    /* 背景画像設定 */
-    .bg-maps {
-        background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2016/07/4678-300x300.jpg');
-    }
-    .bg-panfret {
-        background-image: url('https://www.silhouetteillust.com/wpcontent/uploads/2016/10/15209-300x300.jpg');
-    }
-    .bg-class {
-        background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2017/01/magic-trick_23793-300x300.jpg');
-    }
-    .bg-food {
-        background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2019/06/fastfood-shop_restaurant_43552-300x300.jpg');
-    }
-    .bg-forms {
-        background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2017/04/icon_questionnaire_28306-300x300.jpg');
-    }
-    .bg-acces {
-        background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2016/11/17275-300x300.jpg');
-    }
-    .bg-photo fallery {
-        background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2016/10/14289-300x300.jpg');
-    }
-    .bg-timetable {
-        background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2019/12/calendar_48955-300x300.jpg');
-    }
+    .bg-maps { background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2016/07/4678-300x300.jpg'); }
+    .bg-panfret { background-image: url('https://www.silhouetteillust.com/wpcontent/uploads/2016/10/15209-300x300.jpg'); }
+    .bg-class { background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2017/01/magic-trick_23793-300x300.jpg'); }
+    .bg-food { background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2019/06/fastfood-shop_restaurant_43552-300x300.jpg'); }
+    .bg-forms { background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2017/04/icon_questionnaire_28306-300x300.jpg'); }
+    .bg-acces { background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2016/11/17275-300x300.jpg'); }
+    .bg-photo-gallery { background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2016/10/14289-300x300.jpg'); }
+    .bg-timetable { background-image: url('https://www.silhouette-illust.com/wp-content/uploads/2019/12/calendar_48955-300x300.jpg'); }
 
-    /* フォールバック背景 */
     .hover-card-background::before {
         content: '';
         position: absolute;
@@ -154,230 +127,91 @@
         z-index: -1;
     }
 
-    /* タッチデバイス対応 */
     .hover-card.touch-active .hover-card-background {
         filter: brightness(0.3) blur(2px);
     }
-
     .hover-card.touch-active .hover-card-content {
         opacity: 1;
     }
-
     .hover-card.touch-active .hover-card-overlay {
         background: rgba(0, 0, 0, 0.6);
     }
 
-    /* タブレット対応 */
-    @media (max-width: 1024px) {
-        .hover-cards-container {
-            padding: 15px 10px;
-            gap: 20px;
-        }
-        
-        .cards-row {
-            gap: 15px;
-        }
-        
-        .hover-card {
-            width: 260px;
-            height: 170px;
-        }
-
-        .cards-row-2 .hover-card {
-            width: 300px; /* タブレットでも調整 */
-        }
-    }
-
-    /* スマートフォン対応 */
     @media (max-width: 768px) {
         .hover-cards-container {
-            padding: 15px 10px;
             gap: 15px;
         }
-        
         .cards-row {
             flex-direction: column;
             gap: 15px;
-            align-items: center;
         }
-        
-        .cards-row-3,
-        .cards-row-2 {
-            max-width: 100%;
-        }
-        
         .hover-card,
         .cards-row-2 .hover-card {
-            width: min(90vw, 320px); /* スマホでは同じサイズに戻る */
+            width: min(90vw, 320px);
             height: 170px;
-        }
-        
-        .hover-card-title {
-            font-size: 20px;
-        }
-        
-        .hover-card-description {
-            font-size: 13px;
-        }
-    }
-
-    /* 小さなスマートフォン対応 */
-    @media (max-width: 480px) {
-        .hover-cards-container {
-            padding: 10px 5px;
-            gap: 12px;
-        }
-        
-        .cards-row {
-            gap: 12px;
-        }
-        
-        .hover-card,
-        .cards-row-2 .hover-card {
-            width: min(95vw, 300px);
-            height: 160px;
-        }
-        
-        .hover-card-title {
-            font-size: 18px;
-            margin-bottom: 6px;
-        }
-        
-        .hover-card-description {
-            font-size: 12px;
-            line-height: 1.3;
-        }
-    }
-
-    /* 横向きタブレット対応 */
-    @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-        .cards-row {
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .cards-row-3 .hover-card:nth-child(3) {
-            margin-top: 0;
-        }
-    }
-
-    /* 横向きスマートフォン対応 */
-    @media (max-width: 768px) and (orientation: landscape) and (min-height: 300px) {
-        .hover-cards-container {
-            gap: 10px;
-        }
-        
-        .cards-row {
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .hover-card,
-        .cards-row-2 .hover-card {
-            width: 200px;
-            height: 140px;
-        }
-        
-        .hover-card-title {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-        
-        .hover-card-description {
-            font-size: 11px;
         }
     }
 </style>
 
 <div class="hover-cards-container">
-    <!-- 1行目：3個 -->
     <div class="cards-row cards-row-3">
-        <a href="https://sites.google.com/obirin.ed.jp/2025oozorakarigumi/%E6%A0%A1%E5%86%85%E3%83%9E%E3%83%83%E3%83%97?authuser=2
-" class="hover-card" target="_blank">
-            <div class="hover-card-background bg-maps">
-                <div class="hover-card-overlay"></div>
-            </div>
+        <a href="#" class="hover-card" target="_blank">
+            <div class="hover-card-background bg-maps"><div class="hover-card-overlay"></div></div>
             <div class="hover-card-content">
                 <div class="hover-card-title">MAPS</div>
                 <div class="hover-card-description">学校内の地図です！<br>場所がわからなければ開いてみてください！</div>
             </div>
         </a>
-
-        <a href="https://sites.google.com/obirin.ed.jp/2025oozorakarigumi/%E3%83%91%E3%83%B3%E3%83%95%E3%83%AC%E3%83%83%E3%83%88?authuser=2" class="hover-card" target="_blank">
-            <div class="hover-card-background bg-panfret">
-                <div class="hover-card-overlay"></div>
-            </div>
+        <a href="#" class="hover-card" target="_blank">
+            <div class="hover-card-background bg-panfret"><div class="hover-card-overlay"></div></div>
             <div class="hover-card-content">
-                <div class="hover-card-title">PANFRET</div>
+                <div class="hover-card-title">PANFLET</div>
                 <div class="hover-card-description">今年の桜空祭のパンフレットです！<br>是非見てください！</div>
             </div>
         </a>
-
-        <a href="https://sites.google.com/obirin.ed.jp/2025oozorakarigumi/%E3%82%AF%E3%83%A9%E3%82%B9%E5%9B%A3%E4%BD%93%E5%87%BA%E3%81%97%E7%89%A9?authuser=2" class="hover-card" target="_blank">
-            <div class="hover-card-background bg-class">
-                <div class="hover-card-overlay"></div>
-            </div>
+        <a href="#" class="hover-card" target="_blank">
+            <div class="hover-card-background bg-class"><div class="hover-card-overlay"></div></div>
             <div class="hover-card-content">
-                <div class="hover-card-title">CLASS　PERFORMANS</div>
+                <div class="hover-card-title">CLASS PERFORMANCES</div>
                 <div class="hover-card-description">各クラスの出し物の一覧です！<br>随時更新中！</div>
             </div>
         </a>
     </div>
 
-    <!-- 2行目：3個 -->
     <div class="cards-row cards-row-3">
-        <a href="https://sites.google.com/obirin.ed.jp/2025oozorakarigumi/%E9%A3%B2%E9%A3%9F%E7%89%A9?authuser=2
-" class="hover-card" target="_blank">
-            <div class="hover-card-background bg-food">
-                <div class="hover-card-overlay"></div>
-            </div>
+        <a href="#" class="hover-card" target="_blank">
+            <div class="hover-card-background bg-food"><div class="hover-card-overlay"></div></div>
             <div class="hover-card-content">
                 <div class="hover-card-title">FOOD</div>
                 <div class="hover-card-description">飲食店の情報が乗っています！<br>随時更新中！</div>
             </div>
         </a>
-
-        <a href="https://sites.google.com/obirin.ed.jp/2025oozorakarigumi/%E3%82%A2%E3%83%B3%E3%82%B1%E3%83%BC%E3%83%88%E9%96%A2%E4%BF%82?authuser=2" class="hover-card" target="_blank">
-            <div class="hover-card-background bg-forms">
-                <div class="hover-card-overlay"></div>
-            </div>
+        <a href="#" class="hover-card" target="_blank">
+            <div class="hover-card-background bg-forms"><div class="hover-card-overlay"></div></div>
             <div class="hover-card-content">
                 <div class="hover-card-title">FORMS</div>
                 <div class="hover-card-description">桜空祭や各クラスのアンケートがあります！<br>ご回答お願いします</div>
             </div>
         </a>
-
-        <a href="https://sites.google.com/obirin.ed.jp/2025oozorakarigumi/%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9?authuser=2" class="hover-card" target="_blank">
-            <div class="hover-card-background bg-acces">
-                <div class="hover-card-overlay"></div>
-            </div>
+        <a href="#" class="hover-card" target="_blank">
+            <div class="hover-card-background bg-acces"><div class="hover-card-overlay"></div></div>
             <div class="hover-card-content">
-                <div class="hover-card-title">ACCES</div>
+                <div class="hover-card-title">ACCESS</div>
                 <div class="hover-card-description">桜美林学園までの行き方について<br>書いてあります</div>
             </div>
         </a>
     </div>
 
-    <!-- 3行目：2個（幅を調整してバランスを取る） -->
     <div class="cards-row cards-row-2">
-        <a href="https://sites.google.com/obirin.ed.jp/2025oozorakarigumi/%E3%83%95%E3%82%A9%E3%83%88%E3%82%AE%E3%83%A3%E3%83%A9%E3%83%AA%E3%83%BC?authuser=2
-" class="hover-card" target="_blank">
-            <div class="hover-card-background bg-photo gallery">
-                <div class="hover-card-overlay"></div>
-            </div>
+        <a href="#" class="hover-card" target="_blank">
+            <div class="hover-card-background bg-photo-gallery"><div class="hover-card-overlay"></div></div>
             <div class="hover-card-content">
                 <div class="hover-card-title">PHOTO GALLERY</div>
                 <div class="hover-card-description">桜空祭中の生徒たちの様子です！<br>随時更新中！</div>
             </div>
         </a>
-
-        <a href="https://sites.google.com/obirin.ed.jp/2025oozorakarigumi/%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB?authuser=2
-" class="hover-card" target="_blank">
-            <div class="hover-card-background bg-timetable">
-                <div class="hover-card-overlay"></div>
-            </div>
+        <a href="#" class="hover-card" target="_blank">
+            <div class="hover-card-background bg-timetable"><div class="hover-card-overlay"></div></div>
             <div class="hover-card-content">
                 <div class="hover-card-title">TIMETABLE</div>
                 <div class="hover-card-description">各公演団体のタイムテーブルです<br>随時更新中！</div>
@@ -387,60 +221,17 @@
 </div>
 
 <script>
-    // タッチデバイス対応
     if ('ontouchstart' in window) {
         document.querySelectorAll('.hover-card').forEach(card => {
-            card.addEventListener('touchstart', function() {
+            card.addEventListener('touchstart', function () {
                 this.classList.add('touch-active');
-            });
-            
-            card.addEventListener('touchend', function() {
-                setTimeout(() => {
-                    this.classList.remove('touch-active');
-                }, 200);
-            });
-
-            // タッチ時の他のカードの非アクティブ化
-            card.addEventListener('touchstart', function() {
                 document.querySelectorAll('.hover-card').forEach(otherCard => {
-                    if (otherCard !== this) {
-                        otherCard.classList.remove('touch-active');
-                    }
+                    if (otherCard !== this) otherCard.classList.remove('touch-active');
                 });
+            });
+            card.addEventListener('touchend', function () {
+                setTimeout(() => this.classList.remove('touch-active'), 200);
             });
         });
     }
-
-    // カスタム背景画像設定関数
-    function setHoverCardBackground(cardIndex, imageUrl) {
-        const cards = document.querySelectorAll('.hover-card');
-        if (cards[cardIndex]) {
-            const background = cards[cardIndex].querySelector('.hover-card-background');
-            background.style.backgroundImage = `url('${imageUrl}')`;
-        }
-    }
-
-    // リンク先変更関数
-    function setHoverCardLink(cardIndex, url) {
-        const cards = document.querySelectorAll('.hover-card');
-        if (cards[cardIndex]) {
-            cards[cardIndex].href = url;
-        }
-    }
-
-    // テキスト変更関数
-    function setHoverCardText(cardIndex, title, description) {
-        const cards = document.querySelectorAll('.hover-card');
-        if (cards[cardIndex]) {
-            const titleElement = cards[cardIndex].querySelector('.hover-card-title');
-            const descElement = cards[cardIndex].querySelector('.hover-card-description');
-            if (titleElement) titleElement.textContent = title;
-            if (descElement) descElement.innerHTML = description;
-        }
-    }
-
-    // 使用例（コメントアウト状態）：
-    // setHoverCardBackground(0, 'https://example.com/your-image.jpg'); // 1番目のカード
-    // setHoverCardLink(1, 'https://example.com'); // 2番目のカードのリンク先変更
-    // setHoverCardText(2, '新しいタイトル', '新しい説明文<br>2行目も可能'); // 3番目のカードのテキスト変更
 </script>
